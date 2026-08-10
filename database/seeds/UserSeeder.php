@@ -1,23 +1,21 @@
 <?php
 
+// Seeder for Laravel 7
+
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use App\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         User::updateOrCreate(
             ['email' => 'admin@indraco.com'],
             [
-                'name' => 'Admin INDRACO',
+                'name' => 'Administrator Indraco',
                 'password' => Hash::make('password'),
+                'email_verified_at' => now(),
             ]
         );
     }
