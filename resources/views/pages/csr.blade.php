@@ -13,12 +13,14 @@
 @endpush
 
 @section('content')
+<main id="content" tabindex="-1">
+   
    <!-- Banner Section -->
    <section aria-label="section banner" class="section-banner mb-5">
       <div class="container-sm banner">
          <div class="row banner-wrapper align-items-center">
             <div class="col col-12 z-0">
-               <img src="{{ asset('images/logo-Indraco-life.png') }}" data-light="{{ asset('images/logo-Indraco-life.png') }}" data-dark="{{ asset('images/logo-Indraco-life-invert.png') }}" alt="" aria-hidden="true" class="theme-image img-fluid" style="display: none;" onerror="this.style.display='none'">
+               <img src="{{ asset('images/logo-Indraco-life.png') }}" data-light="{{ asset('images/logo-Indraco-life.png') }}" data-dark="{{ asset('images/logo-Indraco-life-invert.png') }}" alt="INDRACO Life" class="theme-image img-fluid">
                <h2 class="visually-hidden">INDRACO Life</h2>
             </div>
             <div class="col col-6 z-2">
@@ -224,18 +226,18 @@
                   <a href="{{ route('news.detail', $newsItem->slug) }}" class="text-decoration-none d-block">
                      <div class="card news-card bg-body-secondary rounded-4 overflow-hidden shadow">
                         <div class="card-header p-0 news-card-img-wrapper ratio ratio-16x9 overflow-hidden">
-                           <img src="{{ $newsItem->gambar ? asset($newsItem->gambar) : asset('images/news/news-1.jpg') }}" class="card-img-top object-fit-cover w-100 h-100" alt="{{ $newsItem->judul }}" loading="lazy">
+                           <img src="{{ $newsItem->image_path ? asset($newsItem->image_path) : asset('images/news/news-1.jpg') }}" class="card-img-top object-fit-cover w-100 h-100" alt="{{ $newsItem->judul }}" loading="lazy">
                         </div>
                         <div class="card-body p-4 d-flex flex-column">
                            <div class="text-custom-2 fw-semibold text-uppercase mb-2 small" style="letter-spacing: 0.03em;">{{ $newsItem->kategori ?? 'CSR Initiative' }}</div>
                            <h3 class="card-title news-card-title h5 fw-semibold mb-3 text-teal">{{ $newsItem->judul }}</h3>
-                           <div class="text-secondary small mt-auto fw-medium">{{ $newsItem->created_at->format('M d, Y') }}</div>
+                           <div class="text-secondary small mt-auto fw-medium">{{ \Carbon\Carbon::parse($newsItem->created_at)->format('M d, Y') }}</div>
                         </div>
                      </div>
                   </a>
                </li>
             @empty
-               <!-- Card 1 -->
+               <!-- Card 1 Fallback -->
                <li class="news-slide-item">
                   <a href="#" class="text-decoration-none d-block">
                      <div class="card news-card bg-body-secondary rounded-4 overflow-hidden shadow">
@@ -250,72 +252,13 @@
                      </div>
                   </a>
                </li>
-               <!-- Card 2 -->
-               <li class="news-slide-item">
-                  <a href="#" class="text-decoration-none d-block">
-                     <div class="card news-card bg-body-secondary rounded-4 overflow-hidden shadow">
-                        <div class="card-header p-0 news-card-img-wrapper ratio ratio-16x9 overflow-hidden">
-                           <img src="{{ asset('images/news/news-2.jpg') }}" class="card-img-top object-fit-cover w-100 h-100" alt="Komitmen Indraco untuk Wellbeing Karyawan" loading="lazy">
-                        </div>
-                        <div class="card-body p-4 d-flex flex-column">
-                           <div class="text-custom-2 fw-semibold text-uppercase mb-2 small" style="letter-spacing: 0.03em;">CSR Initiative</div>
-                           <h3 class="card-title news-card-title h5 fw-semibold mb-3 text-teal">Komitmen Indraco untuk Wellbeing Karyawan</h3>
-                           <div class="text-secondary small mt-auto fw-medium">May 10, 2026</div>
-                        </div>
-                     </div>
-                  </a>
-               </li>
-               <!-- Card 3 -->
-               <li class="news-slide-item">
-                  <a href="#" class="text-decoration-none d-block">
-                     <div class="card news-card bg-body-secondary rounded-4 overflow-hidden shadow">
-                        <div class="card-header p-0 news-card-img-wrapper ratio ratio-16x9 overflow-hidden">
-                           <img src="{{ asset('images/news/news-3.jpg') }}" class="card-img-top object-fit-cover w-100 h-100" alt="Produk Baru dari Kopi Tugu Buaya" loading="lazy">
-                        </div>
-                        <div class="card-body p-4 d-flex flex-column">
-                           <div class="text-custom-2 fw-semibold text-uppercase mb-2 small" style="letter-spacing: 0.03em;">Product Launch</div>
-                           <h3 class="card-title news-card-title h5 fw-semibold mb-3 text-teal">Produk Baru dari Kopi Tugu Buaya</h3>
-                           <div class="text-secondary small mt-auto fw-medium">April 28, 2026</div>
-                        </div>
-                     </div>
-                  </a>
-               </li>
-               <!-- Card 4 -->
-               <li class="news-slide-item">
-                  <a href="#" class="text-decoration-none d-block">
-                     <div class="card news-card bg-body-secondary rounded-4 overflow-hidden shadow">
-                        <div class="card-header p-0 news-card-img-wrapper ratio ratio-16x9 overflow-hidden">
-                           <img src="{{ asset('images/news/news-4.jpg') }}" class="card-img-top object-fit-cover w-100 h-100" alt="Keikutsertaan Indraco di Pameran Internasional" loading="lazy">
-                        </div>
-                        <div class="card-body p-4 d-flex flex-column">
-                           <div class="text-custom-2 fw-semibold text-uppercase mb-2 small" style="letter-spacing: 0.03em;">Exhibition</div>
-                           <h3 class="card-title news-card-title h5 fw-semibold mb-3 text-teal">Keikutsertaan Indraco di Pameran Internasional</h3>
-                           <div class="text-secondary small mt-auto fw-medium">April 15, 2026</div>
-                        </div>
-                     </div>
-                  </a>
-               </li>
-               <!-- Card 5 -->
-               <li class="news-slide-item">
-                  <a href="#" class="text-decoration-none d-block">
-                     <div class="card news-card bg-body-secondary rounded-4 overflow-hidden shadow">
-                        <div class="card-header p-0 news-card-img-wrapper ratio ratio-16x9 overflow-hidden">
-                           <img src="{{ asset('images/news/news-5.jpg') }}" class="card-img-top object-fit-cover w-100 h-100" alt="Program Donasi Indraco Peduli Lingkungan" loading="lazy">
-                        </div>
-                        <div class="card-body p-4 d-flex flex-column">
-                           <div class="text-custom-2 fw-semibold text-uppercase mb-2 small" style="letter-spacing: 0.03em;">CSR Initiative</div>
-                           <h3 class="card-title news-card-title h5 fw-semibold mb-3 text-teal">Program Donasi Indraco Peduli Lingkungan</h3>
-                           <div class="text-secondary small mt-auto fw-medium">April 02, 2026</div>
-                        </div>
-                     </div>
-                  </a>
-               </li>
             @endforelse
          </ul>
       </div>
 
       <div class="news-slider-indicators d-flex justify-content-center align-items-center gap-2 mt-4"></div>
    </section>
+</main>
 @endsection
 
 @push('scripts')
