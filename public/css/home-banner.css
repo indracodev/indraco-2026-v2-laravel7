@@ -1,0 +1,390 @@
+:root {
+   --color-teal: #004b49;
+   --color-teal-rgb: 0, 75, 73;
+   --color-orange: #fd4f00;
+   --slider-bg-start: #ffffff;
+   --slider-bg-end: #f4f6f8;
+   --pedestal-top-bg: linear-gradient(135deg, #e6e6e8 10%, #f1f5f9 100%);
+   --pedestal-body-bg: linear-gradient(to bottom, #e6e6e8 10%, transparent);
+   --pedestal-shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-bs-theme="dark"] {
+   --slider-bg-start: #2a2a2a;
+   --slider-bg-end: #1e1e1e;
+   --pedestal-top-bg: linear-gradient(135deg, #3d3d3d 0%, #2e2e2e 100%);
+   --pedestal-body-bg: linear-gradient(to bottom, #2d2d2d 10%, transparent);
+   --pedestal-shadow: rgba(0, 0, 0, 0.4);
+}
+
+body {
+   background: radial-gradient(circle at center, var(--slider-bg-start) 40%, var(--slider-bg-end) 100%);
+}
+
+/* Hero Slider Section */
+.product-slider-section {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   min-height: calc(100vh - var(--navbar-height));
+   padding: 40px 0;
+   user-select: none;
+   transition: background 0.3s ease;
+   overflow: hidden !important;
+}
+
+/* Slider Container */
+.slider-container {
+   position: relative;
+   width: 100%;
+   max-width: 1200px;
+   height: 560px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+@media (max-width: 991.98px) {
+   .slider-container {
+      height: 380px;
+      margin: 10px auto;
+   }
+}
+
+/* Slide Wrappers */
+.slider-wrapper {
+   position: relative;
+   width: 100%;
+   height: 100%;
+}
+
+/* Slide Structure */
+.slide {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   width: 320px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+   pointer-events: none;
+   z-index: 1;
+}
+
+/* Giant Background Text */
+.slide .bg-title {
+   position: absolute;
+   top: 0;
+   left: 50%;
+   font-weight: 900;
+   color: var(--color-orange);
+   opacity: 0;
+   transform: scale(0.85) translateY(20px) translateX(-50%);
+   transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+   z-index: 1;
+   pointer-events: none;
+   letter-spacing: 0.05em;
+   line-height: 1;
+   text-align: center;
+   /* width: 100vw; */
+   white-space: nowrap;
+   font-size: clamp(5rem, 10vw, 15rem);
+}
+
+.slide.active .bg-title {
+   opacity: 1;
+   transform: scale(1) translateY(0) translateX(-50%);
+}
+
+/* Pedestal Container */
+.pedestal-container {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-end;
+   height: 360px;
+   width: 320px;
+   z-index: 2;
+   transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (max-width: 991.98px) {
+   .pedestal-container {
+      height: 280px;
+      width: 240px;
+   }
+}
+
+/* Product Image and Shadows */
+.product-image-wrapper {
+   position: absolute;
+   bottom: 110px;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 4;
+   transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (max-width: 991.98px) {
+   .product-image-wrapper {
+      bottom: 85px;
+   }
+}
+
+.product-image {
+   width: calc(200px + 2vw);
+   height: calc(200px + 2vw);
+   object-fit: contain;
+   transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Product Contact Shadow on Top of Pedestal */
+.product-shadow {
+   position: absolute;
+   bottom: -5px;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 80px;
+   height: 16px;
+   background: rgba(0, 0, 0, 0.15);
+   filter: blur(5px);
+   border-radius: 50%;
+   z-index: 1;
+   transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (max-width: 991.98px) {
+   .product-shadow {
+      width: 60px;
+      height: 12px;
+   }
+}
+
+/* 3D Cylinder Pedestal */
+.cylinder {
+   position: relative;
+   width: 300px;
+   height: 120px;
+   transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+   margin-bottom: 20px;
+}
+
+@media (max-width: 991.98px) {
+   .cylinder {
+      width: 250px;
+      height: 90px;
+   }
+}
+
+.cylinder-top {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 40px;
+   background: var(--pedestal-top-bg);
+   border-radius: 50%;
+   border: 1px solid rgba(255, 255, 255, 0.15);
+   box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.05);
+   z-index: 3;
+}
+
+@media (max-width: 991.98px) {
+   .cylinder-top {
+      height: 30px;
+   }
+}
+
+.cylinder-body {
+   position: absolute;
+   top: 20px;
+   left: 0;
+   width: 100%;
+   height: 200px;
+   background: var(--pedestal-body-bg);
+   border-radius: 0 0 50% 50% / 0 0 20px 20px;
+   z-index: 2;
+}
+
+@media (max-width: 991.98px) {
+   .cylinder-body {
+      top: 15px;
+      border-radius: 0 0 50% 50% / 0 0 15px 15px;
+   }
+}
+
+/* 3D Carousel Layout States */
+.slide.active {
+   transform: translate(-50%, -50%) scale(1);
+   z-index: 5;
+   opacity: 1;
+   pointer-events: auto;
+}
+
+/* Floating animations for Active slide elements */
+@keyframes floatActiveProduct {
+   0% {
+      transform: translateY(0px) rotate(0deg);
+   }
+
+   50% {
+      transform: translateY(-10px) rotate(1deg);
+   }
+
+   100% {
+      transform: translateY(0px) rotate(0deg);
+   }
+}
+
+@keyframes floatActiveShadow {
+   0% {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+   }
+
+   50% {
+      transform: translateX(-50%) scale(0.85);
+      opacity: 0.6;
+   }
+
+   100% {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+   }
+}
+
+.slide.active .product-image {
+   animation: floatActiveProduct 6s ease-in-out infinite;
+}
+
+.slide.active .product-shadow {
+   animation: floatActiveShadow 6s ease-in-out infinite;
+}
+
+/* Side States - Desktop */
+@media (min-width: 992px) {
+   .slide.prev {
+      transform: translate(-180%, -40%) scale(0.7);
+      z-index: 3;
+      opacity: 0.45;
+      filter: grayscale(100%);
+      pointer-events: auto;
+      cursor: pointer;
+   }
+
+   .slide.next {
+      transform: translate(80%, -40%) scale(0.7);
+      z-index: 3;
+      opacity: 0.45;
+      filter: grayscale(100%);
+      pointer-events: auto;
+      cursor: pointer;
+   }
+
+   .slide.hidden-left {
+      transform: translate(-250%, -40%) scale(0.4);
+      opacity: 0;
+      z-index: 1;
+   }
+
+   .slide.hidden-right {
+      transform: translate(150%, -40%) scale(0.4);
+      opacity: 0;
+      z-index: 1;
+   }
+}
+
+/* Side States - Mobile */
+@media (max-width: 991.98px) {
+   .slide.prev {
+      transform: translate(-115%, -45%) scale(0.55);
+      z-index: 3;
+      opacity: 0.35;
+      filter: grayscale(100%);
+      pointer-events: auto;
+      cursor: pointer;
+   }
+
+   .slide.next {
+      transform: translate(15%, -45%) scale(0.55);
+      z-index: 3;
+      opacity: 0.35;
+      filter: grayscale(100%);
+      pointer-events: auto;
+      cursor: pointer;
+   }
+
+   .slide.hidden-left {
+      transform: translate(-200%, -45%) scale(0.3);
+      opacity: 0;
+      z-index: 1;
+   }
+
+   .slide.hidden-right {
+      transform: translate(100%, -45%) scale(0.3);
+      opacity: 0;
+      z-index: 1;
+   }
+}
+
+/* Interactive Footer Bar */
+.slider-footer {
+   z-index: 10;
+   margin-top: -20px;
+}
+
+/* Description text */
+.slider-description {
+   color: var(--color-teal);
+   font-size: 1.1rem;
+   line-height: 1.5;
+   font-weight: 500;
+   transition: opacity 0.3s ease;
+}
+
+/* If parent theme is dark, style slider description accordingly */
+[data-bs-theme="dark"] .slider-description {
+   color: var(--bs-body-color);
+}
+
+@media (max-width: 991.98px) {
+   .slider-description {
+      font-size: 0.95rem;
+      max-width: 290px;
+      margin: 0 auto;
+   }
+}
+
+/* Pagination Indicators */
+.slider-indicators {
+   display: flex;
+   gap: 12px;
+   align-items: center;
+}
+
+.indicator {
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   background-color: rgba(var(--bs-body-color-rgb), .25);
+   border: none;
+   padding: 0;
+   cursor: pointer;
+   transition: all 0.3s ease;
+}
+
+.indicator.active {
+   background-color: var(--custom-color-1);
+   transform: scale(1.3);
+}
+
+[data-bs-theme="dark"] .indicator.active {
+   background-color: var(--custom-color-2);
+}

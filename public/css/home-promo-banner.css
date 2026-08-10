@@ -1,0 +1,231 @@
+/* =============================================
+   INDRACO – Homepage Promotional Banner Carousel
+   Integrated with Admin-managed master_banners
+   ============================================= */
+
+:root {
+   --banner-overlay-dark: linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+   --banner-overlay-center: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);
+   --banner-height: 520px;
+   --banner-height-md: 380px;
+   --banner-height-sm: 260px;
+   --banner-teal: #004b49;
+   --banner-orange: #fd4f00;
+}
+
+/* ── Section Wrapper ── */
+.promo-banner-section {
+   position: relative;
+   overflow: hidden;
+}
+
+/* ── Bootstrap Carousel Overrides ── */
+.promo-carousel {
+   border-radius: 24px;
+   overflow: hidden;
+   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+}
+
+.promo-carousel .carousel-item {
+   height: var(--banner-height);
+}
+
+.promo-carousel .carousel-item img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: center;
+   display: block;
+}
+
+/* ── Overlay Gradient ── */
+.promo-carousel .carousel-item .banner-overlay {
+   position: absolute;
+   inset: 0;
+   background: var(--banner-overlay-dark);
+   z-index: 1;
+}
+
+/* ── Text Content ── */
+.promo-carousel .carousel-caption {
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   right: auto;
+   top: 50%;
+   transform: translateY(-50%);
+   max-width: 55%;
+   padding: 0 2.5rem 0 3rem;
+   text-align: left;
+   z-index: 2;
+}
+
+.promo-carousel .carousel-caption .banner-eyebrow {
+   font-size: 0.75rem;
+   font-weight: 700;
+   text-transform: uppercase;
+   letter-spacing: 0.12em;
+   color: var(--banner-orange);
+   margin-bottom: 0.5rem;
+   opacity: 0.9;
+}
+
+.promo-carousel .carousel-caption .banner-title {
+   font-size: clamp(1.5rem, 3vw, 2.6rem);
+   font-weight: 800;
+   line-height: 1.15;
+   color: #ffffff;
+   margin-bottom: 0.75rem;
+   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.promo-carousel .carousel-caption .banner-subtitle {
+   font-size: clamp(0.85rem, 1.5vw, 1rem);
+   color: rgba(255, 255, 255, 0.82);
+   margin-bottom: 1.25rem;
+   line-height: 1.5;
+}
+
+.promo-carousel .carousel-caption .banner-cta {
+   display: inline-block;
+   padding: 0.55rem 1.5rem;
+   background: var(--banner-orange);
+   color: #ffffff;
+   border-radius: 50px;
+   font-weight: 600;
+   font-size: 0.875rem;
+   text-decoration: none;
+   transition: transform 0.2s ease, box-shadow 0.2s ease;
+   box-shadow: 0 4px 16px rgba(253, 79, 0, 0.4);
+}
+
+.promo-carousel .carousel-caption .banner-cta:hover {
+   transform: translateY(-2px);
+   box-shadow: 0 6px 22px rgba(253, 79, 0, 0.55);
+}
+
+/* ── Navigation Arrows ── */
+.promo-carousel .carousel-control-prev,
+.promo-carousel .carousel-control-next {
+   width: 48px;
+   height: 48px;
+   background: rgba(255, 255, 255, 0.15);
+   backdrop-filter: blur(8px);
+   border-radius: 50%;
+   top: 50%;
+   transform: translateY(-50%);
+   opacity: 1;
+   transition: background 0.25s ease;
+}
+
+.promo-carousel .carousel-control-prev {
+   left: 1.25rem;
+}
+
+.promo-carousel .carousel-control-next {
+   right: 1.25rem;
+}
+
+.promo-carousel .carousel-control-prev:hover,
+.promo-carousel .carousel-control-next:hover {
+   background: rgba(0, 75, 73, 0.65);
+}
+
+.promo-carousel .carousel-control-prev-icon,
+.promo-carousel .carousel-control-next-icon {
+   width: 20px;
+   height: 20px;
+}
+
+/* ── Custom Indicators ── */
+.promo-carousel .carousel-indicators {
+   margin-bottom: 1.25rem;
+   gap: 6px;
+}
+
+.promo-carousel .carousel-indicators [data-bs-target] {
+   width: 8px;
+   height: 8px;
+   border-radius: 50%;
+   background-color: rgba(255, 255, 255, 0.45);
+   border: none;
+   opacity: 1;
+   transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.promo-carousel .carousel-indicators .active {
+   background-color: #ffffff;
+   transform: scale(1.4);
+}
+
+/* ── Slide-in Animation for Caption ── */
+@keyframes bannerFadeUp {
+   from {
+      opacity: 0;
+      transform: translateY(-50%) translateY(20px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(-50%);
+   }
+}
+
+.promo-carousel .carousel-item.active .carousel-caption {
+   animation: bannerFadeUp 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* ── Responsive ── */
+@media (max-width: 991.98px) {
+   .promo-carousel .carousel-item {
+      height: var(--banner-height-md);
+   }
+
+   .promo-carousel .carousel-caption {
+      max-width: 70%;
+      padding: 0 1.5rem 0 1.75rem;
+      top: 50%;
+   }
+
+   .promo-carousel .carousel-control-prev,
+   .promo-carousel .carousel-control-next {
+      width: 36px;
+      height: 36px;
+   }
+}
+
+@media (max-width: 575.98px) {
+   .promo-carousel {
+      border-radius: 16px;
+   }
+
+   .promo-carousel .carousel-item {
+      height: var(--banner-height-sm);
+   }
+
+   .promo-carousel .carousel-caption {
+      max-width: 85%;
+      padding: 0 1rem 0 1.25rem;
+      top: 50%;
+   }
+
+   .promo-carousel .carousel-caption .banner-title {
+      margin-bottom: 0.4rem;
+   }
+
+   .promo-carousel .carousel-caption .banner-subtitle {
+      display: none;
+   }
+
+   .promo-carousel .carousel-caption .banner-cta {
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+   }
+
+   .promo-carousel .carousel-control-prev { left: 0.75rem; }
+   .promo-carousel .carousel-control-next { right: 0.75rem; }
+}
+
+/* ── Dark mode compatibility ── */
+[data-bs-theme="dark"] .promo-carousel {
+   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+}

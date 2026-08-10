@@ -1,0 +1,79 @@
+@font-face {
+   font-family: "Montserrat";
+   src: url("Montserrat-Bold.woff2") format("woff2");
+   font-weight: 700;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: "Montserrat";
+   src: url("Montserrat-SemiBold.woff2") format("woff2");
+   font-weight: 600;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: "Montserrat";
+   src: url("Montserrat-Medium.woff2") format("woff2");
+   font-weight: 500;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: "Montserrat";
+   src: url("Montserrat-Regular.woff2") format("woff2");
+   font-weight: 400;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: "Montserrat";
+   src: url("Montserrat-Light.woff2") format("woff2");
+   font-weight: 300;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: "Montserrat";
+   src: url("Montserrat-ExtraLight.woff2") format(woff2);
+   font-weight: 200;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: "Montserrat";
+   src: url("Montserrat-Thin.woff2") format(woff2);
+   font-weight: 100;
+   font-style: normal;
+   font-display: swap;
+}
+
+.fw-thin {font-weight: 100 !important;}
+.fw-light {font-weight: 200 !important;}
+.fw-lighter {font-weight: 300 !important;}
+.fw-normal {font-weight: 400 !important;}
+.fw-medium {font-weight: 500 !important;}
+.fw-semibold {font-weight: 600 !important;}
+.fw-bold {font-weight: 700 !important;}
+
+
+@font-face {
+   font-family: "Licorice";
+   src: url("Licorice-Regular.woff2") format(woff2);
+   font-weight: normal;
+   font-style: normal;
+}
+
+.text-calligraphy {font-family: "Licorice" !important;}
+
+
+body {
+   font-family: "Montserrat", sans-serif;
+   font-weight: 400;
+}

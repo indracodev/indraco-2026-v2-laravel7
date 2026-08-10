@@ -1,0 +1,191 @@
+:root {
+   --about-visible-items: 3;
+   --about-gap: 24px;
+}
+
+@media (max-width: 991.98px) {
+   :root {
+      --about-visible-items: 2;
+      --about-gap: 20px;
+   }
+}
+
+@media (max-width: 575.98px) {
+   :root {
+      --about-visible-items: 1;
+      --about-gap: 16px;
+   }
+}
+
+/* Slider Section Padding Adjustments */
+.about-slider-section {
+   position: relative;
+}
+
+/* Slider Container */
+.about-slider-container {
+   overflow: visible; /* Allow overlapping elements to be visible */
+   position: relative;
+   cursor: grab;
+   padding-top: 90px; /* Crucial padding to prevent circular image clipping */
+   padding-bottom: 20px;
+}
+
+.about-slider-container:active {
+   cursor: grabbing;
+}
+
+/* Inner wrapper to crop the overflow left and right, but allow overflow top */
+.about-slider-clip-wrapper {
+   overflow: hidden;
+   margin: 0 -15px; /* offset container padding slightly for sliding look */
+   padding: 0 15px;
+}
+
+/* Slider Track */
+.about-slider-track {
+   display: flex;
+   gap: var(--about-gap);
+   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+   transform: translateX(calc(-1 * var(--about-current-index, 0) * (100% + var(--about-gap)) / var(--about-visible-items)));
+   will-change: transform;
+}
+
+/* Slider Item */
+.about-slide-item {
+   flex: 0 0 calc((100% - (var(--about-visible-items) - 1) * var(--about-gap)) / var(--about-visible-items));
+   width: calc((100% - (var(--about-visible-items) - 1) * var(--about-gap)) / var(--about-visible-items));
+   box-sizing: border-box;
+   user-select: none;
+}
+
+/* Timeline Card */
+.timeline-card {
+   position: relative;
+   background-color: #eef0f3; /* Premium off-white/light-grey */
+   border-radius: 28px;
+   padding: 95px 24px 35px 24px; /* Big top padding for circular image */
+   text-align: center;
+   border: none;
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-card:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* Circular Image Container overlapping the top */
+.timeline-img-wrapper {
+   width: 160px;
+   height: 160px;
+   border-radius: 50%;
+   border: 6px solid var(--custom-color-2); /* Orange #fd4f00 */
+   position: absolute;
+   top: 0;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+   overflow: hidden;
+   background-color: #fff;
+   z-index: 10;
+}
+
+.timeline-img-wrapper img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   border-radius: 50%;
+   user-select: none;
+   pointer-events: none;
+}
+
+/* Card Content Details */
+.timeline-title {
+   color: var(--custom-color-1); /* Dark teal #004b49 */
+   font-size: 1.35rem;
+   font-weight: 600;
+   margin-bottom: 0;
+   line-height: 1.3;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-grow: 1;
+   min-height: 56px; /* consistent title height for layout alignment */
+}
+
+.timeline-divider {
+   width: 40px;
+   height: 2px;
+   background-color: var(--custom-color-1); /* Dark teal */
+   opacity: 0.8;
+   margin: 16px auto !important;
+   border: none;
+}
+
+.timeline-more-btn {
+   color: #7f8c8d;
+   text-decoration: none;
+   font-size: 0.95rem;
+   font-weight: 400;
+   letter-spacing: 0.05em;
+   display: inline-block;
+   background: none;
+   border: none;
+   padding: 0;
+   cursor: pointer;
+   transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.timeline-more-btn:hover,
+.timeline-more-btn:focus {
+   color: var(--custom-color-2);
+   outline: none;
+}
+
+/* Dots Indicators */
+.about-dot {
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   background-color: rgba(255, 255, 255, 0.35);
+   border: none;
+   padding: 0;
+   cursor: pointer;
+   transition: all 0.3s ease;
+}
+
+.about-dot.active {
+   background-color: #ffffff;
+   transform: scale(1.2);
+}
+
+/* Custom Bootstrap Modal adjustments for the timeline details */
+.modal-timeline .modal-content {
+   border-radius: 20px;
+   border: none;
+   overflow: hidden;
+}
+
+.modal-timeline .modal-header {
+   background-color: var(--custom-color-1);
+   color: white;
+   border-bottom: none;
+}
+
+.modal-timeline .btn-close {
+   filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.modal-timeline .timeline-modal-img {
+   width: 100%;
+   max-height: 300px;
+   object-fit: cover;
+   border-radius: 12px;
+   margin-bottom: 20px;
+}
