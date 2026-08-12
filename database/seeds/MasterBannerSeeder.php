@@ -1,108 +1,28 @@
 <?php
 
-// Seeder for Laravel 7
+// Seeder generated from c:/laragon/www/#Project2026/indracocoffee-v2-laravel-7/db/db-indracocoffee-v2-laravel-10.sql for master_banners
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 class MasterBannerSeeder extends Seeder
 {
-    /**
-     * Seed data banner awal yang terintegrasi dengan 3D Hero Product Slider di Landing Page.
-     *
-     * Field mapping:
-     * - title_id / title_en : Teks Oranye Raksasa (contoh: COFFEE, GINGER, CHOCOLATE, COCONUT)
-     * - subtitle_id         : Deskripsi singkat di sudut kiri bawah slider
-     * - image_path          : Gambar produk pada pedestal 3D
-     * - link                : Tautan saat gambar produk diklik
-     * - order_num           : Urutan slide
-     */
     public function run(): void
     {
-        // Hapus data lama sebelum seed ulang
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('master_banners')->truncate();
 
-        $now = now();
+        DB::unprepared(<<<'SQL'
+INSERT INTO `master_banners` VALUES (1, 'images/coffee-bean.png', 'COFFEE Me', 'COFFEE Me', 'Enjoy a selection of quality coffee with a distinctive aroma.', 'Enjoy a selection of quality coffee with a distinctive aroma.', '/products', 'Explore Coffee', 'Explore Coffee', 1, 1, NULL, '2026-07-30 06:57:40', '2026-07-30 07:02:24');
 
-        $banners = [
-            // ── Slide 1: COFFEE ────────────────────────────────────────────────
-            [
-                'image_path'     => 'images/coffee-bean.png',
-                'title_id'       => 'COFFEE',
-                'title_en'       => 'COFFEE',
-                'subtitle_id'    => 'Enjoy a selection of quality coffee with a distinctive aroma.',
-                'subtitle_en'    => 'Enjoy a selection of quality coffee with a distinctive aroma.',
-                'link'           => '/products',
-                'button_text_id' => 'Explore Coffee',
-                'button_text_en' => 'Explore Coffee',
-                'order_num'      => 1,
-                'is_active'      => 1,
-                'created_at'     => $now,
-                'updated_at'     => $now,
-            ],
+INSERT INTO `master_banners` VALUES (2, 'images/ginger.png', 'GINGER', 'GINGER', 'Experience the warm, comforting, and soothing properties of our selected ginger.', 'Experience the warm, comforting, and soothing properties of our selected ginger.', '/products', 'Explore Ginger', 'Explore Ginger', 2, 1, NULL, '2026-07-30 06:57:40', '2026-07-30 06:57:40');
 
-            // ── Slide 2: GINGER ────────────────────────────────────────────────
-            [
-                'image_path'     => 'images/ginger.png',
-                'title_id'       => 'GINGER',
-                'title_en'       => 'GINGER',
-                'subtitle_id'    => 'Experience the warm, comforting, and soothing properties of our selected ginger.',
-                'subtitle_en'    => 'Experience the warm, comforting, and soothing properties of our selected ginger.',
-                'link'           => '/products',
-                'button_text_id' => 'Explore Ginger',
-                'button_text_en' => 'Explore Ginger',
-                'order_num'      => 2,
-                'is_active'      => 1,
-                'created_at'     => $now,
-                'updated_at'     => $now,
-            ],
+INSERT INTO `master_banners` VALUES (3, 'images/chocolate.png', 'CHOCOLATE', 'CHOCOLATE', 'Indulge in the rich, deep, and smooth flavors of premium quality chocolate drink.', 'Indulge in the rich, deep, and smooth flavors of premium quality chocolate drink.', '/products', 'Explore Chocolate', 'Explore Chocolate', 3, 1, NULL, '2026-07-30 06:57:40', '2026-07-30 06:57:40');
 
-            // ── Slide 3: CHOCOLATE ─────────────────────────────────────────────
-            [
-                'image_path'     => 'images/chocolate.png',
-                'title_id'       => 'CHOCOLATE',
-                'title_en'       => 'CHOCOLATE',
-                'subtitle_id'    => 'Indulge in the rich, deep, and smooth flavors of premium quality chocolate drink.',
-                'subtitle_en'    => 'Indulge in the rich, deep, and smooth flavors of premium quality chocolate drink.',
-                'link'           => '/products',
-                'button_text_id' => 'Explore Chocolate',
-                'button_text_en' => 'Explore Chocolate',
-                'order_num'      => 3,
-                'is_active'      => 1,
-                'created_at'     => $now,
-                'updated_at'     => $now,
-            ],
-
-            // ── Slide 4: COCONUT ───────────────────────────────────────────────
-            [
-                'image_path'     => 'images/coconut.png',
-                'title_id'       => 'COCONUT',
-                'title_en'       => 'COCONUT',
-                'subtitle_id'    => 'Delight in the fresh, creamy, and tropical taste of our premium coconut milk.',
-                'subtitle_en'    => 'Delight in the fresh, creamy, and tropical taste of our premium coconut milk.',
-                'link'           => '/products',
-                'button_text_id' => 'Explore Coconut',
-                'button_text_en' => 'Explore Coconut',
-                'order_num'      => 4,
-                'is_active'      => 1,
-                'created_at'     => $now,
-                'updated_at'     => $now,
-            ],
-        ];
-
-        DB::table('master_banners')->insert($banners);
-
-        $this->command->info('✅ MasterBannerSeeder: ' . count($banners) . ' banner 3D slider berhasil ditambahkan.');
-        $this->command->newLine();
-        $this->command->table(
-            ['Order', 'Teks Oranye (Title)', 'Deskripsi (Subtitle)', 'Image Path', 'Status'],
-            collect($banners)->map(fn ($b) => [
-                $b['order_num'],
-                $b['title_id'],
-                $b['subtitle_id'],
-                $b['image_path'],
-                $b['is_active'] ? '✅ Active' : '⏸ Inactive',
-            ])->toArray()
+INSERT INTO `master_banners` VALUES (4, 'images/coconut.png', 'COCONUT', 'COCONUT', 'Delight in the fresh, creamy, and tropical taste of our premium coconut milk.', 'Delight in the fresh, creamy, and tropical taste of our premium coconut milk.', '/products', 'Explore Coconut', 'Explore Coconut', 4, 1, NULL, '2026-07-30 06:57:40', '2026-07-30 06:57:40');
+SQL
         );
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
