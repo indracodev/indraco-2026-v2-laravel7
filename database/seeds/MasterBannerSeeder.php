@@ -93,16 +93,18 @@ class MasterBannerSeeder extends Seeder
         DB::table('master_banners')->insert($banners);
 
         $this->command->info('✅ MasterBannerSeeder: ' . count($banners) . ' banner 3D slider berhasil ditambahkan.');
-        $this->command->newLine();
+        $this->command->line('');
         $this->command->table(
             ['Order', 'Teks Oranye (Title)', 'Deskripsi (Subtitle)', 'Image Path', 'Status'],
-            collect($banners)->map(fn ($b) => [
-                $b['order_num'],
-                $b['title_id'],
-                $b['subtitle_id'],
-                $b['image_path'],
-                $b['is_active'] ? '✅ Active' : '⏸ Inactive',
-            ])->toArray()
+            collect($banners)->map(function ($b) {
+                return [
+                    $b['order_num'],
+                    $b['title_id'],
+                    $b['subtitle_id'],
+                    $b['image_path'],
+                    $b['is_active'] ? '✅ Active' : '⏸ Inactive',
+                ];
+            })->toArray()
         );
     }
 }
