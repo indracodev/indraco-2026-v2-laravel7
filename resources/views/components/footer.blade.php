@@ -2,6 +2,7 @@
    .page-footer .nav-link {color: inherit; white-space: nowrap; opacity: .75;}
    .page-footer .nav-link:hover, .page-footer .nav-link:focus-within {opacity: 1;}
    .page-footer .nav-link.active {opacity: 1; font-weight: 600;}
+   .navsos-footer .nav-link {font-size: 2rem}
 
    @media (min-width: 1200px) {
       .page-footer-top .accordion-button {pointer-events: none !important}
@@ -19,8 +20,8 @@
             <div class="flex-grow-1">
                <p class="fs-5">Roasting fine exquisite coffee since 1971.</p>
             </div>
-            <nav aria-labelledby="sosmed-nav-title">
-               <h3 id="sosmed-nav-title" class="visually-hidden">Social media navigation</h3>
+            <nav aria-labelledby="sosmed-nav-title" class="navsos-footer">
+               <h3 id="sosmed-nav-title" class="visually-hidden">Social media navigation on footer page</h3>
                @include('components.sosmed')
             </nav>
          </article>
