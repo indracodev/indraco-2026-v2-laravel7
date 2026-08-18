@@ -108,17 +108,19 @@
    <hr>
    <div class="page-footer-bottom">
       <div class="container d-xl-flex flex-wrap gap-3">
-         <p class="text-muted order-xl-2">&copy; 2026 INDRACO. All rights reserved</p>
+         <p class="text-muted order-xl-2">&copy; {{ date('Y') }} INDRACO. All rights reserved</p>
          <nav aria-labelledby="legal-nav-title" class="order-xl-1 flex-grow-1 mb-3">
             <h2 id="legal-nav-title" class="visually-hidden">Legal navigation</h2>
             <ul class="nav gap-2">
-               <li class="nav-item"><a href="#" class="nav-link p-0">Privacy Policy</a></li>
+               <li class="nav-item"><a href="{{ route('privacy-policy') }}" class="nav-link p-0">Privacy Policy</a></li>
                <li class="nav-item vr" aria-hidden="true"></li>
-               <li class="nav-item"><a href="#" class="nav-link p-0">Terms & Conditions</a></li>
+               <li class="nav-item"><a href="{{ route('terms-conditions') }}" class="nav-link p-0">Terms & Conditions</a></li>
                <li class="nav-item vr" aria-hidden="true"></li>
-               <li class="nav-item"><a href="#" class="nav-link p-0">Information On Data Protection</a></li>
+               <li class="nav-item"><a href="{{ route('data-protection') }}" class="nav-link p-0">Information On Data Protection</a></li>
                <li class="nav-item vr" aria-hidden="true"></li>
-               <li class="nav-item"><a href="#" class="nav-link p-0">Help</a></li>
+               <li class="nav-item"><a href="{{ route('help') }}" class="nav-link p-0">Help</a></li>
+               <li class="nav-item vr" aria-hidden="true"></li>
+               <li class="nav-item"><a href="{{ route('admin.login') }}" class="nav-link p-0">Admin Login</a></li>
                <li class="nav-item vr" aria-hidden="true"></li>
             </ul>
          </nav>
