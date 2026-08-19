@@ -1,0 +1,80 @@
+:root {
+   --multi-slide-visible-items: 3;
+   --multi-slide-gap: 1.5rem;
+}
+
+@media (max-width: 991.98px) {
+   :root {
+      --multi-slide-visible-items: 2;
+      --multi-slide-gap: 1.25rem;
+   }
+}
+
+@media (max-width: 575.98px) {
+   :root {
+      --multi-slide-visible-items: 1;
+      --multi-slide-gap: 1rem;
+   }
+}
+
+/* Arrow Navigation Buttons */
+.multi-slide-arrow {
+   width: 42px;
+   height: 42px;
+   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Main Container & Slider Track */
+.multi-slide-container {
+   position: relative;
+   cursor: grab;
+   border-radius: 1rem;
+}
+
+.multi-slide-container:active {
+   cursor: grabbing;
+}
+
+.multi-slide-track {
+   display: flex;
+   gap: var(--multi-slide-gap);
+   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+   transform: translateX(calc(-1 * var(--multi-slide-virtual-index, 0) * (100% + var(--multi-slide-gap)) / var(--multi-slide-visible-items)));
+   will-change: transform;
+}
+
+.multi-slide-item {
+   flex: 0 0 calc((100% - (var(--multi-slide-visible-items) - 1) * var(--multi-slide-gap)) / var(--multi-slide-visible-items));
+   width: calc((100% - (var(--multi-slide-visible-items) - 1) * var(--multi-slide-gap)) / var(--multi-slide-visible-items));
+   box-sizing: border-box;
+}
+
+.multi-slide-item>* {
+   height: 100%;
+}
+
+/* Dots Indicators */
+.multi-slide-indicators {
+   min-height: 24px;
+}
+
+.multi-slide-dot {
+   width: 8px;
+   height: 8px;
+   border-radius: 50%;
+   background-color: color-mix(in srgb, currentColor 25%, transparent);
+   border: none;
+   padding: 0;
+   cursor: pointer;
+   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.multi-slide-dot:hover {
+   background-color: color-mix(in srgb, currentColor 75%, transparent);
+}
+
+.multi-slide-dot.active {
+   background-color: color-mix(in srgb, currentColor 100%, transparent);
+   width: 24px;
+   border-radius: 12px;
+}
