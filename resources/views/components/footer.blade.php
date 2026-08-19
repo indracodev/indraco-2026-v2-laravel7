@@ -31,7 +31,7 @@
                <li class="accordion-item bg-transparent border-0">
                   <h3 class="accordion-header mb-xl-3">
                      <button class="accordion-button bg-transparent shadow-none fs-5 fw-medium px-0 p-xl-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-company" aria-controls="collapse-company" aria-expanded="false">Company</button>
-                     <hr class="opacity-100 m-0 my-xl-3 d-none d-xl-block">
+                     <hr class="opacity-75 m-0 my-xl-3 d-none d-xl-block">
                   </h3>
                   <div id="collapse-company" class="accordion-collapse collapse d-xl-block" data-bs-parent="#page-footer-nav">
                      <div class="accordion-body p-xl-0">
@@ -52,7 +52,7 @@
                   <h3 class="accordion-header mb-xl-3">
                      <hr class="m-0 my-xl-3 d-xl-none">
                      <button class="accordion-button bg-transparent shadow-none fs-5 fw-medium px-0 p-xl-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-brands" aria-controls="collapse-brands" aria-expanded="false">Brands</button>
-                     <hr class="opacity-100 m-0 my-xl-3 d-none d-xl-block">
+                     <hr class="opacity-75 m-0 my-xl-3 d-none d-xl-block">
                   </h3>
                   <div id="collapse-brands" class="accordion-collapse collapse d-xl-block" data-bs-parent="#page-footer-nav">
                      <div class="accordion-body p-xl-0">
@@ -75,7 +75,7 @@
                   <h3 class="accordion-header mb-xl-3">
                      <hr class="m-0 my-xl-3 d-xl-none">
                      <button class="accordion-button bg-transparent shadow-none fs-5 fw-medium px-0 p-xl-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-support" aria-controls="collapse-support" aria-expanded="false">Support</button>
-                     <hr class="opacity-100 m-0 my-xl-3 d-none d-xl-block">
+                     <hr class="opacity-75 m-0 my-xl-3 d-none d-xl-block">
                   </h3>
                   <div id="collapse-support" class="accordion-collapse collapse d-xl-block" data-bs-parent="#page-footer-nav">
                      <div class="accordion-body p-xl-0">
@@ -91,7 +91,7 @@
          </nav>
          <section id="footer-newsletter">
             <h3 class="fs-5 mb-3">Newsletter</h3>
-            <hr class="opacity-100 d-none d-xl-block">
+            <hr class="opacity-75 d-none d-xl-block">
             <form>
                <label class="form-label mb-4 fs-6" for="subscribe">Subscribe to get the latest updates from Indraco</label>
                <div class="input-group text-bg-light p-1 rounded-pill overflow-hidden">
