@@ -20,7 +20,6 @@
 
 .form-control, .form-select {border: var(--bs-border-width) solid color-mix(in srgb, var(--bs-border-color) 25%, transparent);}
 
-.text-title {color: var(--title-color) !important; font-weight: 700 !important;}
 
 .card {--bs-card-border-color: color-mix(in srgb, var(--bs-border-color) 25%, var(--bs-body-bg)) !important;}
 
@@ -36,9 +35,12 @@ ul.list-bullet {padding-left: 20px; margin: 0;}
 ul.list-bullet li::marker {content: "● "; font-size: 1.2em; font-family: Arial, Helvetica, sans-serif;}
 ul.list-bullet li {margin-bottom: 15px;}
 
-.text-bg-custom1 {background-color: var(--custom-color-1) !important; color: var(--bs-white) !important;}
-.text-bg-custom2 {background-color: var(--custom-color-2) !important; color: var(--bs-white) !important;}
+.text-bg-custom-1 {background-color: var(--custom-color-1) !important; color: var(--bs-white) !important;}
+.text-bg-custom-2 {background-color: var(--custom-color-2) !important; color: var(--bs-white) !important;}
+.text-custom-1 {color: var(--custom-color-1);}
+.text-custom-2 {color: var(--custom-color-2);}
 .text-muted {color: color-mix(in srgb, currentColor 50%, transparent) !important;}
+.text-title {color: var(--title-color) !important;}
 
 .grid-cols-2 {grid-template-columns: repeat(2, 1fr);}
 

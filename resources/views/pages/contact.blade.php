@@ -227,7 +227,7 @@
                      </div>
                   </div>
                   <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-                     <button type="submit" class="btn btn-lg rounded-pill text-bg-custom1 w-100 px-5">SEND</button>
+                     <button type="submit" class="btn btn-lg rounded-pill text-bg-custom-1 w-100 px-5">SEND</button>
                   </div>
                </div>
             </div>

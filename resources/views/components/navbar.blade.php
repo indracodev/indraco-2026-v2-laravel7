@@ -76,7 +76,7 @@
    <h2 id="navbar-title" class="menu-title visually-hidden">Main navigation</h2>
    <div class="menu-wrapper container-fluid p-1 shadow">
 
-      <div class="menu-header text-bg-custom1 p-1 rounded-pill">
+      <div class="menu-header text-bg-custom-1 p-1 rounded-pill">
          <ul class="menu-header-list nav justify-content-between align-items-center gap-2 gap-md-3">
             <li class="menu-header-item">
                <button class="main-menu-toggle menu-header-btn btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navcol" aria-controls="navcol" aria-expanded="false">

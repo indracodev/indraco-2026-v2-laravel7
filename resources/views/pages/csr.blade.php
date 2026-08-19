@@ -4,7 +4,6 @@
 
 @push('styles')
    <link rel="stylesheet" href="{{ asset('css/multi-slide.css') }}">
-   {{-- <style>* {outline: solid 1px green;}</style> --}}
 @endpush
 
 @push('scripts')

@@ -81,13 +81,13 @@
                <article class="card multi-slide-card bg-body-secondary border-0 rounded-4 overflow-hidden h-100 shadow">
                   <div class="multi-slide-card-img-wrapper ratio ratio-16x9">
                      <img src="{{ asset($itemImage) }}" alt="{{ $itemTitle }}"
-                        class="object-fit-cover w-100 h-100 multi-slide-card-img" loading="lazy">
+                        class="object-fit-cover w-100 h-100 multi-slide-card-img" loading="lazy" aria-hidden="true">
                   </div>
                   <div class="card-body p-4 d-flex flex-column justify-content-between">
                      <div>
                         <small
-                           class="multi-slide-card-category text-uppercase d-block mb-2">{{ $itemCategory }}</small>
-                        <h3 class="multi-slide-card-title fs-5 fw-semibold mb-3">{{ $itemTitle }}
+                           class="multi-slide-card-category text-uppercase text-custom-2 d-block fw-semibold mb-2">{{ $itemCategory }}</small>
+                        <h3 class="multi-slide-card-title fs-5 fw-semibold lh-base mb-3">{{ $itemTitle }}
                         </h3>
                      </div>
                      @if ($itemDate)

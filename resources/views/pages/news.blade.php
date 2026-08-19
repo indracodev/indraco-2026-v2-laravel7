@@ -1,124 +1,146 @@
 @extends('layouts.app')
 
-@section('title', 'INDRACO – News & Events')
+@section('title', 'Latest news and events from INDRACO')
 
 @push('styles')
-   <link rel="stylesheet" href="{{ asset('css/home-banner.css') }}">
-   <link rel="stylesheet" href="{{ asset('css/home-news.css') }}">
+   <link rel="stylesheet" href="{{ asset('css/multi-slide.css') }}">
+@endpush
+
+@push('scripts')
+   <script src="{{ asset('js/multi-slide.js') }}"></script>
 @endpush
 
 @section('content')
-<main id="content" tabindex="-1">
-
-   <!-- Banner Section -->
-   <section aria-label="section banner" class="section-banner mb-5">
-      <div class="container-sm banner">
-         <div class="row banner-wrapper align-items-center">
-            <div class="col col-12 z-0">
-               <h2 class="banner-title">NEWS</h2>
+   <section class="banner overflow-hidden">
+      <div class="container-sm">
+         <div class="row g-0">
+            <div class="col-12">
+               <h1 id="section-banner-title" class="banner-title z-0">NEWS</h1>
             </div>
-            <div class="col col-6 z-2">
-               <h3 class="banner-text">Stay Updated with Our Latest Stories</h3>
+            <div class="col-7 z-2">
+               <p class="banner-text lh-sm m-0">Stay Updated with Our Latest Stories.</p>
             </div>
-            <div class="col col-6 col-xxl-5 ms-auto z-1">
-               <div class="banner-media">
-                  <div class="banner-images-wrapper">
-                     <img src="{{ asset('images/icon-news.png') }}" alt="News Banner Icon" class="banner-images">
+            <div class="col-5 col-xxl-4 z-1">
+               <div class="banner-media ratio ratio-1x1">
+                  <div class="banner-media-images h-auto top-0 start-50 translate-middle z-1">
+                     <div class="ratio ratio-1x1 w-100">
+                        <img src="{{ asset('images/icon-news.png') }}" alt="" aria-hidden="true" loading="lazy"
+                           class="object-fit-contain">
+                     </div>
                   </div>
-                  <div class="pedestal z-0">
-                     <div class="pedestal-wrapper">
+                  <div class="pedestal h-auto top-50 start-50 z-0">
+                     <div class="pedestal-wrapper ratio ratio-4x3 w-100">
                         <div class="pedestal-top"></div>
                         <div class="pedestal-body"></div>
                      </div>
                   </div>
                </div>
             </div>
-            <div class="col col-12 z-3">
-               <div class="banner-sosmed d-flex justify-content-center justify-content-lg-end">
+            <div class="col-auto ms-auto z-3">
+               <nav aria-labelledby="banner-sosmed-title" class="banner-navsos">
+                  <h2 id="banner-sosmed-title" class="visually-hidden">Social media navigation on page banner</h2>
                   @include('components.sosmed')
+               </nav>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   @if (isset($featuredNews) && $featuredNews)
+      <section class="container mb-5" aria-labelledby="news-title">
+         <div class="bg-body-secondary rounded-4 p-4 p-lg-5">
+            <h2 id="news-title" class="text-title fs-3 fw-semibold mb-4">
+               {{ $featuredNews->judul_eng ? Str::upper(Str::words($featuredNews->judul_eng, 2, '')) : 'FEATURED STORY' }}
+            </h2>
+            <div class="row row-cols-1 g-4 row-cols-lg-2 g-xl-5">
+               <div class="col">
+                  <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow">
+                     <img src="{{ $featuredNews->image_url }}" alt="" loading="lazy" aria-hidden="true"
+                        class="object-fit-cover">
+                  </div>
+               </div>
+               <div class="col d-flex flex-column">
+                  <h3 class="fs-1 fw-semibold">{{ $featuredNews->localized_judul }}</h3>
+                  <p class="flex-grow-1">{{ Str::limit(strip_tags($featuredNews->localized_content), 240) }}</p>
+                  <small class="text-muted">{{ $featuredNews->formatted_tanggal }}</small>
                </div>
             </div>
          </div>
-      </div>
-   </section>
-
-   <!-- News Head Section (Featured Article) -->
-   @if(isset($featuredNews) && $featuredNews)
-   <section aria-label="news head section" class="container mb-5">
-      <div class="bg-body-secondary px-4 py-5 p-lg-5 rounded-4">
-         <div class="text-custom-2 fw-semibold text-uppercase mb-2 small" style="letter-spacing: 0.03em;">
-            {{ $featuredNews->judul_eng ? Str::upper(Str::words($featuredNews->judul_eng, 2, '')) : 'FEATURED STORY' }}
-         </div>
-         <div class="row g-3 row-cols-1 row-cols-md-2 g-md-4 gx-xl-5">
-            <div class="col">
-               <a href="{{ route('news.detail', $featuredNews->slug) }}" class="d-block ratio ratio-16x9 bg-body rounded-4 overflow-hidden shadow">
-                  <img src="{{ $featuredNews->image_url }}" alt="{{ $featuredNews->localized_judul }}" class="object-fit-cover top-50 start-50 translate-middle w-100 h-100">
-               </a>
-            </div>
-            <div class="col d-flex flex-column">
-               <h3 class="fw-semibold fs-1">
-                  <a href="{{ route('news.detail', $featuredNews->slug) }}" class="text-dark text-decoration-none hover-primary">
-                     {{ $featuredNews->localized_judul }}
-                  </a>
-               </h3>
-               <p class="flex-grow-1 text-secondary">
-                  {{ Str::limit(strip_tags($featuredNews->localized_content), 240) }}
-               </p>
-               <small class="text-secondary fw-medium">{{ $featuredNews->formatted_tanggal }}</small>
-            </div>
-         </div>
-      </div>
-   </section>
+      </section>
    @endif
 
-   <!-- Dynamic News Slider Track Section -->
-   <section aria-label="section news" class="container news-slider-section mb-5">
-      <header class="d-flex justify-content-between align-items-center mb-3">
-         <h2 class="fs-3 fw-semibold m-0">NEWS</h2>
-         <div class="d-flex align-items-center gap-3">
-            <div class="news-slider-controls d-flex gap-2">
-               <button class="btn news-control-btn news-prev-btn btn-outline-invert rounded-circle d-flex align-items-center justify-content-center" aria-label="Previous slide">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="none" aria-hidden="true" width="16" height="16"><path fill="currentColor" d="M380.9 489.4L211.5 320L380.9 150.6C393.4 138.1 393.4 117.8 380.9 105.3C368.4 92.8 348.1 92.8 335.6 105.3L144.3 296.6C131.8 309.1 131.8 329.4 144.3 341.9L335.6 533.2C348.1 545.7 368.4 545.7 380.9 533.2C393.4 520.7 393.4 500.4 380.9 489.4z" /></svg>
-               </button>
-               <button class="btn news-control-btn news-next-btn btn-outline-invert rounded-circle d-flex align-items-center justify-content-center" aria-label="Next slide">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="none" aria-hidden="true" width="16" height="16"><path fill="currentColor" d="M228.9 150.6L398.3 320L228.9 489.4C216.4 501.9 216.4 522.2 228.9 534.7C241.4 547.2 261.7 547.2 274.2 534.7L465.5 343.4C478 330.9 478 310.6 465.5 298.1L274.2 106.8C261.7 94.3 241.4 94.3 228.9 106.8C216.4 119.3 216.4 139.6 228.9 150.6z" /></svg>
-               </button>
-            </div>
-         </div>
-      </header>
+   <section class="multi-slide container mb-5" aria-labelledby="news-list-title">
+      @php
+         $moments = [
+             [
+                 'category' => 'PRODUCTS LAUNCH',
+                 'title' => "Produk Baru dari Kopi Tugu Buaya",
+                 'date' => 'April 28, 2026',
+                 'image' => 'images/news/news-3.jpg',
+                 'url' => '#',
+             ],
+             [
+                 'category' => 'EXHIBITION',
+                 'title' => "Keikutsertaan INDRACO di Pameran Inrternational",
+                 'date' => 'April 15, 2026',
+                 'image' => 'images/news/news-4.jpg',
+                 'url' => '#',
+             ],
+             [
+                 'category' => 'AWARD & ACHIEVEMENT',
+                 'title' => "INDRACO meraih penghargaan FMCG terbaik 2026",
+                 'date' => 'March 15, 2026',
+                 'image' => 'images/news/news-7.jpg',
+                 'url' => '#',
+             ],
+             [
+                 'category' => 'EMPLOYEE WELL-BEING',
+                 'title' => "PT Indraco Global Indonesia's Commitment to Employee Wellbeing",
+                 'date' => 'May 20, 2026',
+                 'image' => 'images/news/news-2.jpg',
+                 'url' => '#',
+             ],
+             [
+                 'category' => 'BE A GOOD PERSON',
+                 'title' => 'Regular Blood Donation Program: Benefits, Requirements, and Impact for Employees',
+                 'date' => 'May 10, 2026',
+                 'image' => 'images/news/news-6.jpg',
+                 'url' => '#',
+             ],
+             [
+                 'category' => 'COMMUNITY EMPOWERMENT',
+                 'title' => 'Jumat Berkah: Sharing Kindness in the Workplace',
+                 'date' => 'April 28, 2026',
+                 'image' => 'images/news/news-8.jpg',
+                 'url' => '#',
+             ],
+             [
+                 'category' => 'CSR INITIATIVE',
+                 'title' => 'INDRACO Berbagi: Building a Culture of Care and Appreciation',
+                 'date' => 'April 15, 2026',
+                 'image' => 'images/news/news-9.jpg',
+                 'url' => '#',
+             ],
+             [
+                 'category' => 'CSR INITIATIVE',
+                 'title' => 'Gawai Dayak: A Celebration of Harvest Gratitude and Community in Kalimantan',
+                 'date' => 'March 30, 2026',
+                 'image' => 'images/news/news-5.jpg',
+                 'url' => '#',
+             ],
+         ];
+      @endphp
 
-      <div class="news-slider-container">
-         <ul class="list-unstyled news-slider-track">
-            @forelse($newsList as $news)
-               <li class="news-slide-item">
-                  <a href="{{ route('news.detail', $news->slug) }}" class="text-decoration-none d-block">
-                     <div class="card news-card bg-body-secondary rounded-4 overflow-hidden shadow">
-                        <div class="card-header p-0 news-card-img-wrapper ratio ratio-16x9 overflow-hidden">
-                           <img src="{{ $news->image_url }}" class="card-img-top object-fit-cover w-100 h-100" alt="{{ $news->localized_judul }}" loading="lazy">
-                        </div>
-                        <div class="card-body p-4 d-flex flex-column">
-                           <div class="text-custom-2 fw-semibold text-uppercase mb-2 small" style="letter-spacing: 0.03em;">
-                              {{ $news->judul_eng ? Str::upper(Str::words($news->judul_eng, 2, '')) : 'NEWS & MEDIA' }}
-                           </div>
-                           <h3 class="card-title news-card-title h5 fw-semibold mb-3">{{ $news->localized_judul }}</h3>
-                           <div class="text-secondary small mt-auto fw-medium">{{ $news->formatted_tanggal }}</div>
-                        </div>
-                     </div>
-                  </a>
-               </li>
-            @empty
-               <li class="w-100 text-center py-4 text-muted">Belum ada berita.</li>
-            @endforelse
-         </ul>
-      </div>
-
-      <!-- Slider Dot Indicators -->
-      <div class="news-slider-indicators d-flex justify-content-center align-items-center gap-2 mt-4"></div>
+      @include('components.multi-slide', [
+          'id' => 'news-list-carousel',
+          'titleId' => 'news-list-title',
+          'title' => 'NEWS',
+          'viewAllText' => 'View all news',
+          'viewAllUrl' => '#',
+          'autoplay' => true,
+          'interval' => 5000,
+          'loop' => true,
+          'items' => $moments,
+      ])
    </section>
-
-</main>
 @endsection
-
-@push('scripts')
-   <script src="{{ asset('js/home-news.js') }}"></script>
-@endpush
