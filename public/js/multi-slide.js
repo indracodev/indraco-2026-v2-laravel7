@@ -25,7 +25,7 @@ class MultiSlideCarousel {
       this.isAutoplay = this.wrapper.dataset.autoplay !== 'false';
       this.intervalDuration = parseInt(this.wrapper.dataset.interval) || 5000;
       this.isLoop = this.wrapper.dataset.loop !== 'false';
-      
+
       this.visibleLg = parseInt(this.wrapper.dataset.visibleLg) || 3;
       this.visibleMd = parseInt(this.wrapper.dataset.visibleMd) || 2;
       this.visibleSm = parseInt(this.wrapper.dataset.visibleSm) || 1;
@@ -59,7 +59,7 @@ class MultiSlideCarousel {
       this.setupClones();
       this.renderIndicators();
       this.updatePosition(false);
-      
+
       if (this.isAutoplay) {
          this.startAutoplay();
       }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Download the INDRACO Catalog & Brochure')
+@section('title', "Download the INDRACO Catalog & Brochure")
 
 @section('content')
    <section class="banner overflow-hidden">

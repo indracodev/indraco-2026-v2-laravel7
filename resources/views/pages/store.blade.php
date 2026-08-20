@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Let\'s shop at our online store.')
+@section('title', "Let's shop at our online store")
 
 @section('content')
    <section class="banner overflow-hidden">

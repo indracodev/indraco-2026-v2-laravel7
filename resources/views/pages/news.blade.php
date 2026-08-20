@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Latest news and events from INDRACO')
+@section('title', "Latest news and events from INDRACO")
 
 @push('styles')
    <link rel="stylesheet" href="{{ asset('css/multi-slide.css') }}">

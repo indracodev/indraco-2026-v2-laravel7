@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'INDRACO Corporate Social Responsibility')
+@section('title', "INDRACO Corporate Social Responsibility")
 
 @push('styles')
    <link rel="stylesheet" href="{{ asset('css/multi-slide.css') }}">
