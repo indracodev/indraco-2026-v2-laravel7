@@ -142,7 +142,7 @@
       <p class="fs-2 text-muted mb-4">Making A Difference Every Day.</p>
       <ul class="list-unstyled row g-4 row-cols-1 row-cols-md-2 row-cols-xl-3 row-cols-xxl-4">
          <li class="col">
-            <div class="card border-0 bg-body-tertiary rounded-4 overflow-hidden shadow text-center h-100">
+            <div class="card border-0 bg-body-secondary rounded-4 overflow-hidden shadow text-center h-100">
                <div class="card-header bg-transparent border-0">
                   <div class="w-75 mx-auto ratio ratio-1x1">
                      <img src="{{ asset('images/csr-growth.png') }}" alt="" aria-hidden="true" loading="lazy"
@@ -156,7 +156,7 @@
             </div>
          </li>
          <li class="col">
-            <div class="card border-0 bg-body-tertiary rounded-4 overflow-hidden shadow text-center h-100">
+            <div class="card border-0 bg-body-secondary rounded-4 overflow-hidden shadow text-center h-100">
                <div class="card-header bg-transparent border-0">
                   <div class="w-75 mx-auto ratio ratio-1x1">
                      <img src="{{ asset('images/csr-community.png') }}" alt="" aria-hidden="true"
@@ -171,7 +171,7 @@
             </div>
          </li>
          <li class="col">
-            <div class="card border-0 bg-body-tertiary rounded-4 overflow-hidden shadow text-center h-100">
+            <div class="card border-0 bg-body-secondary rounded-4 overflow-hidden shadow text-center h-100">
                <div class="card-header bg-transparent border-0">
                   <div class="w-75 mx-auto ratio ratio-1x1">
                      <img src="{{ asset('images/csr-good-people.png') }}" alt="" aria-hidden="true"
@@ -186,7 +186,7 @@
             </div>
          </li>
          <li class="col">
-            <div class="card border-0 bg-body-tertiary rounded-4 overflow-hidden shadow text-center h-100">
+            <div class="card border-0 bg-body-secondary rounded-4 overflow-hidden shadow text-center h-100">
                <div class="card-header bg-transparent border-0">
                   <div class="w-75 mx-auto ratio ratio-1x1">
                      <img src="{{ asset('images/csr-voluntering.png') }}" alt="" aria-hidden="true"

@@ -43,8 +43,8 @@
          <h2 id="job-title" class="text-title fs-3 fw-semibold mb-4">JOB VACANCY</h2>
          <ul class="list-unstyled row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 g-xl-5">
             <li class="col">
-               <article class="card border-0 shadow rounded-4 overflow-hidden">
-                  <div class="card-header ratio ratio-16x9 bg-body-tertiary border-0">
+               <article class="card border-0 shadow rounded-4 overflow-hidden bg-body-tertiary">
+                  <div class="card-header ratio ratio-16x9 border-0 bg-transparent">
                      <img src="{{ asset('images/JobS.png') }}" data-light="{{ asset('images/JobS.png') }}"
                         data-dark="{{ asset('images/JobS-invert.png') }}" alt="" aria-hidden="true" loading="lazy"
                         class="card-img theme-image object-fit-contain top-50 start-50 translate-middle w-75 h-auto">
@@ -56,8 +56,8 @@
                </article>
             </li>
             <li class="col">
-               <article class="card border-0 shadow rounded-4 overflow-hidden">
-                  <div class="card-header ratio ratio-16x9 bg-body-tertiary border-0">
+               <article class="card border-0 shadow rounded-4 overflow-hidden bg-body-tertiary">
+                  <div class="card-header ratio ratio-16x9 border-0 bg-transparent">
                      <img src="{{ asset('images/LinkedIn.png') }}" data-light="{{ asset('images/LinkedIn.png') }}"
                         data-dark="{{ asset('images/LinkedIn-invert.png') }}" alt="" aria-hidden="true"
                         loading="lazy"

@@ -189,7 +189,7 @@
             <ul class="list-unstyled row row-cols-1 g-4 row-cols-xl-2" aria-label="Foudner list">
                <li class="col">
                   <article
-                     class="card-team bg-body-secondary rounded-4 shadow p-4 d-flex flex-column gap-3 p-3 overflow-hidden text-center align-items-center flex-md-row align-items-md-start text-md-start h-100">
+                     class="card-team bg-body-tertiary rounded-4 shadow p-4 d-flex flex-column gap-3 p-3 overflow-hidden text-center align-items-center flex-md-row align-items-md-start text-md-start h-100">
                      <div class="card-team-header bg-secondary ratio ratio-1x1 rounded-circle overflow-hidden">
                         <img src="{{ asset('images/person.jpg') }}" alt="" aria-hidden="true" loading="lazy"
                            class="card-team-img object-fit-cover">
@@ -211,7 +211,7 @@
                </li>
                <li class="col">
                   <article
-                     class="card-team bg-body-secondary rounded-4 shadow p-4 d-flex flex-column gap-3 p-3 overflow-hidden text-center align-items-center flex-md-row align-items-md-start text-md-start h-100">
+                     class="card-team bg-body-tertiary rounded-4 shadow p-4 d-flex flex-column gap-3 p-3 overflow-hidden text-center align-items-center flex-md-row align-items-md-start text-md-start h-100">
                      <div class="card-team-header bg-secondary ratio ratio-1x1 rounded-circle overflow-hidden">
                         <img src="{{ asset('images/person.jpg') }}" alt="" aria-hidden="true" loading="lazy"
                            class="card-team-img object-fit-cover">
@@ -239,7 +239,7 @@
             <ul class="list-unstyled row row-cols-1 g-4 row-cols-md-2 row-cols-xl-3" aria-label="Foudner list">
                <li class="col">
                   <article
-                     class="card-team bg-body-secondary rounded-4 shadow p-4 d-flex flex-column gap-3 p-3 overflow-hidden text-center align-items-center h-100">
+                     class="card-team bg-body-tertiary rounded-4 shadow p-4 d-flex flex-column gap-3 p-3 overflow-hidden text-center align-items-center h-100">
                      <div class="card-team-header bg-secondary ratio ratio-1x1 rounded-circle overflow-hidden">
                         <img src="{{ asset('images/person.jpg') }}" alt="" aria-hidden="true" loading="lazy"
                            class="card-team-img object-fit-cover">
@@ -261,7 +261,7 @@
                </li>
                <li class="col">
                   <article
-                     class="card-team bg-body-secondary rounded-4 shadow p-4 d-flex flex-column gap-3 p-3 overflow-hidden text-center align-items-center h-100">
+                     class="card-team bg-body-tertiary rounded-4 shadow p-4 d-flex flex-column gap-3 p-3 overflow-hidden text-center align-items-center h-100">
                      <div class="card-team-header bg-secondary ratio ratio-1x1 rounded-circle overflow-hidden">
                         <img src="{{ asset('images/person.jpg') }}" alt="" aria-hidden="true" loading="lazy"
                            class="card-team-img object-fit-cover">
@@ -282,7 +282,7 @@
                </li>
                <li class="col">
                   <article
-                     class="card-team bg-body-secondary rounded-4 shadow p-4 d-flex flex-column gap-3 p-3 overflow-hidden text-center align-items-center h-100">
+                     class="card-team bg-body-tertiary rounded-4 shadow p-4 d-flex flex-column gap-3 p-3 overflow-hidden text-center align-items-center h-100">
                      <div class="card-team-header bg-secondary ratio ratio-1x1 rounded-circle overflow-hidden">
                         <img src="{{ asset('images/person.jpg') }}" alt="" aria-hidden="true" loading="lazy"
                            class="card-team-img object-fit-cover">
@@ -303,7 +303,7 @@
                </li>
                <li class="col">
                   <article
-                     class="card-team bg-body-secondary rounded-4 shadow p-4 d-flex flex-column gap-3 p-3 overflow-hidden text-center align-items-center h-100">
+                     class="card-team bg-body-tertiary rounded-4 shadow p-4 d-flex flex-column gap-3 p-3 overflow-hidden text-center align-items-center h-100">
                      <div class="card-team-header bg-secondary ratio ratio-1x1 rounded-circle overflow-hidden">
                         <img src="{{ asset('images/person.jpg') }}" alt="" aria-hidden="true" loading="lazy"
                            class="card-team-img object-fit-cover">
