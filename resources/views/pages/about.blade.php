@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'All about INDRACO')
+@section('title', "All about INDRACO")
 
 @push('styles')
+   <link rel="stylesheet" href="{{ asset('css/multi-slide.css') }}">
    {{-- team section styles --}}
    <style>
       .card-team-header {
@@ -103,6 +104,10 @@
          }
       }
    </style>
+@endpush
+
+@push('scripts')
+   <script src="{{ asset('js/multi-slide.js') }}"></script>
 @endpush
 
 @section('content')
@@ -406,4 +411,137 @@
          </ul>
       </div>
    </section>
+
+   <section class="multi-slide container mb-5" aria-labelledby="timeline-title" data-bs-theme="dark">
+      @php
+         $timelineItems = [
+             [
+                 'title' => 'Established',
+                 'image' => 'images/timeline-1971.jpg',
+                 'modal' => 'modal1971',
+             ],
+             [
+                 'title' => "Expansion\nTo Surabaya",
+                 'image' => 'images/timeline-1977.jpg',
+                 'modal' => 'modal1977',
+             ],
+             [
+                 'title' => "Move\nTo Gresik",
+                 'image' => 'images/timeline-1996.jpg',
+                 'modal' => 'modal1996',
+             ],
+             [
+                 'title' => "Asiaterra\nIntegration",
+                 'image' => 'images/timeline-2000.jpg',
+                 'modal' => 'modal2000',
+             ],
+             [
+                 'title' => "Global\nExpansion",
+                 'image' => 'images/timeline-2018.jpg',
+                 'modal' => 'modal2018',
+             ],
+         ];
+      @endphp
+
+      @include('components.multi-slide', [
+          'id' => 'timeline-carousel',
+          'titleId' => 'timeline-title',
+          'title' => 'OVER THE YEARS',
+          'variant' => 'timeline',
+          'autoplay' => true,
+          'interval' => 5000,
+          'loop' => true,
+          'showControls' => true,
+          'showArrows' => true,
+          'showIndicators' => true,
+          'swipe' => false,
+          'items' => $timelineItems,
+      ])
+   </section>
+
+   <!-- Timeline Modals -->
+   <!-- Modal 1971 -->
+   <div class="modal fade modal-timeline" id="modal1971" tabindex="-1" aria-labelledby="modal1971Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="modal1971Label">1971 &ndash; Established</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+               <img src="{{ asset('images/timeline-1971.jpg') }}" alt="1971: Established" class="timeline-modal-img">
+               <h4 class="h5 fw-bold mb-3">UD Intisari Founded</h4>
+               <p class="mb-0 text-secondary">Dimulai dari gudang kopi kecil di Dumai, Riau, Sumatra oleh pendiri kami, UD Intisari memproduksi dan mendistribusikan kopi berkualitas tinggi, yang menjadi fondasi utama kesuksesan Indraco.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Modal 1977 -->
+   <div class="modal fade modal-timeline" id="modal1977" tabindex="-1" aria-labelledby="modal1977Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="modal1977Label">1977 &ndash; Expansion To Surabaya</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+               <img src="{{ asset('images/timeline-1977.jpg') }}" alt="1977: Expansion To Surabaya" class="timeline-modal-img">
+               <h4 class="h5 fw-bold mb-3">Launch of Legend Tugu Buaya Coffee</h4>
+               <p class="mb-0 text-secondary">Indraco memindahkan basis operasionalnya ke Surabaya untuk menjangkau pasar yang lebih luas di pulau Jawa dan seluruh wilayah Indonesia Timur, serta secara resmi meluncurkan merek legendaris "Kopi Tugu Buaya".</p>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Modal 1996 -->
+   <div class="modal fade modal-timeline" id="modal1996" tabindex="-1" aria-labelledby="modal1996Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="modal1996Label">1996 &ndash; Move To Gresik</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+               <img src="{{ asset('images/timeline-1996.jpg') }}" alt="1996: Move To Gresik" class="timeline-modal-img">
+               <h4 class="h5 fw-bold mb-3">New Factory in Driyorejo, Gresik</h4>
+               <p class="mb-0 text-secondary">Untuk memenuhi permintaan pasar yang terus melonjak tinggi, Indraco membangun pabrik modern berskala besar di Driyorejo, Gresik, Jawa Timur, guna menyatukan seluruh kegiatan produksi dan logistik.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Modal 2000 -->
+   <div class="modal fade modal-timeline" id="modal2000" tabindex="-1" aria-labelledby="modal2000Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="modal2000Label">2000 &ndash; Asiaterra Integration</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+               <img src="{{ asset('images/timeline-2000.jpg') }}" alt="2000: Asiaterra Integration" class="timeline-modal-img">
+               <h4 class="h5 fw-bold mb-3">Nationwide Distribution Network</h4>
+               <p class="mb-0 text-secondary">Indraco mendirikan unit distribusi khusus "Asiaterra" (PT. Asiaterra Indopangan) untuk secara profesional mengelola rantai pasok dan memperluas distribusi produk Indraco ke seluruh wilayah Indonesia.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Modal 2018 -->
+   <div class="modal fade modal-timeline" id="modal2018" tabindex="-1" aria-labelledby="modal2018Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="modal2018Label">2018 &ndash; Global Expansion</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+               <img src="{{ asset('images/timeline-2018.jpg') }}" alt="2018: Global Expansion" class="timeline-modal-img">
+               <h4 class="h5 fw-bold mb-3">Supresso International Singapore</h4>
+               <p class="mb-0 text-secondary">Indraco melangkah ke kancah global dengan mendirikan Supresso International (INDRACO Pte. Ltd.) di Singapura untuk menyajikan produk kopi premium, termasuk kapsul kopi, ke pasar internasional.</p>
+            </div>
+         </div>
+      </div>
+   </div>
 @endsection

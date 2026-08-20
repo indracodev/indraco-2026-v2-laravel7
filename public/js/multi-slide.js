@@ -25,6 +25,8 @@ class MultiSlideCarousel {
       this.isAutoplay = this.wrapper.dataset.autoplay !== 'false';
       this.intervalDuration = parseInt(this.wrapper.dataset.interval) || 5000;
       this.isLoop = this.wrapper.dataset.loop !== 'false';
+      this.showIndicators = this.wrapper.dataset.showIndicators !== 'false';
+      this.isSwipe = this.wrapper.dataset.swipe !== 'false';
 
       this.visibleLg = parseInt(this.wrapper.dataset.visibleLg) || 3;
       this.visibleMd = parseInt(this.wrapper.dataset.visibleMd) || 2;
@@ -150,6 +152,10 @@ class MultiSlideCarousel {
 
    renderIndicators() {
       if (!this.indicatorsContainer) return;
+      if (!this.showIndicators) {
+         this.indicatorsContainer.style.display = 'none';
+         return;
+      }
       this.indicatorsContainer.innerHTML = '';
 
       if (this.totalItems <= 1) return;
@@ -280,6 +286,7 @@ class MultiSlideCarousel {
    }
 
    dragStart(e) {
+      if (!this.isSwipe) return;
       this.isDragging = true;
       this.wasDragged = false;
       this.startX = e.clientX || (e.touches ? e.touches[0].clientX : 0);

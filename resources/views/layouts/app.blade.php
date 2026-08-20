@@ -3,7 +3,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>@yield('title', 'INDRACO, A Leading FMCG Company in Indonesia Since 1971')</title>
+   <title>@yield('title', 'INDRACO, a Leading FMCG Company in Indonesia Since 1971')</title>
    <link rel="shortcut icon" href="{{ asset('images/icon-indraco.ico') }}" type="image/x-icon">
 
    {{-- Core CSS --}}

@@ -11,7 +11,7 @@
       #footer-newsletter {max-width: 300px;}
    }
 </style>
-<footer class="page-footer mt-5 py-3 text-bg-custom-1 small">
+<footer class="page-footer mt-5 py-3 text-bg-custom-1 small" data-bs-theme="dark">
    <div class="page-footer-top py-5">
       <div class="container d-grid gap-3 d-xl-flex gap-xl-5">
          <article aria-labelledby="header-page-footer" class="d-flex flex-column me-xl-auto">
@@ -96,7 +96,7 @@
                <label class="form-label mb-4 fs-6" for="subscribe">Subscribe to get the latest updates from Indraco</label>
                <div class="input-group text-bg-light p-1 rounded-pill overflow-hidden">
                   <input class="form-control bg-transparent border-0 shadow-none text-dark" type="email" name="subscribe" id="subscribe" placeholder="Enter your email address" autocomplete="email" required>
-                  <button class="btn text-bg-custom2 rounded-pill opacity-100" type="submit">
+                  <button class="btn text-bg-custom-2 rounded-pill opacity-100" type="submit">
                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="none" aria-hidden="true" width="21" height="21"><path fill="currentColor" d="M566.6 342.6C579.1 330.1 579.1 309.8 566.6 297.3L406.6 137.3C394.1 124.8 373.8 124.8 361.3 137.3C348.8 149.8 348.8 170.1 361.3 182.6L466.7 288L96 288C78.3 288 64 302.3 64 320C64 337.7 78.3 352 96 352L466.7 352L361.3 457.4C348.8 469.9 348.8 490.2 361.3 502.7C373.8 515.2 394.1 515.2 406.6 502.7L566.6 342.7z"></path></svg>
                      <span class="visually-hidden">Subscribe to newsletter</span>
                   </button>

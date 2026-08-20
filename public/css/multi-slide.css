@@ -35,6 +35,11 @@
    cursor: grabbing;
 }
 
+.multi-slide-wrapper[data-swipe="false"] .multi-slide-container,
+.multi-slide-wrapper[data-swipe="false"] .multi-slide-container:active {
+   cursor: default;
+}
+
 .multi-slide-track {
    display: flex;
    gap: var(--multi-slide-gap);
@@ -77,4 +82,180 @@
    background-color: color-mix(in srgb, currentColor 100%, transparent);
    width: 24px;
    border-radius: 12px;
+}
+
+/* Timeline Variant Styles */
+.multi-slide-wrapper.multi-slide-timeline {
+   overflow: hidden;
+}
+
+.multi-slide-wrapper.multi-slide-timeline .multi-slide-container {
+   overflow: visible;
+   padding-top: 85px;
+   padding-bottom: 20px;
+}
+
+.timeline-card {
+   position: relative;
+   background-color: #f4f6f6;
+   border-radius: 24px;
+   padding: 95px 24px 35px 24px;
+   text-align: center;
+   border: none;
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-card:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.timeline-img-wrapper {
+   width: 150px;
+   height: 150px;
+   border-radius: 50%;
+   border: 5px solid var(--custom-color-2, #fd4f00);
+   position: absolute;
+   top: 0;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+   overflow: hidden;
+   background-color: #fff;
+   z-index: 10;
+}
+
+.timeline-img-wrapper img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   border-radius: 50%;
+   user-select: none;
+   pointer-events: none;
+}
+
+.timeline-title {
+   color: var(--custom-color-1, #004b49);
+   font-size: 1.35rem;
+   font-weight: 600;
+   margin-bottom: 0;
+   line-height: 1.3;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-grow: 1;
+   min-height: 56px;
+}
+
+.timeline-divider {
+   width: 40px;
+   height: 2px;
+   background-color: var(--custom-color-1, #004b49);
+   opacity: 0.8;
+   margin: 16px auto !important;
+   border: none;
+}
+
+.timeline-more-btn {
+   color: #7f8c8d;
+   text-decoration: none;
+   font-size: 0.95rem;
+   font-weight: 400;
+   letter-spacing: 0.05em;
+   display: inline-block;
+   background: none;
+   border: none;
+   padding: 0;
+   cursor: pointer;
+   transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.timeline-more-btn:hover,
+.timeline-more-btn:focus {
+   color: var(--custom-color-2, #fd4f00);
+   outline: none;
+}
+
+/* Timeline Details Modal Adjustments */
+.modal-timeline .modal-content {
+   border-radius: 20px;
+   border: none;
+   overflow: hidden;
+}
+
+.modal-timeline .modal-header {
+   background-color: var(--custom-color-1, #004b49);
+   color: white;
+   border-bottom: none;
+}
+
+.modal-timeline .btn-close {
+   filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.modal-timeline .timeline-modal-img {
+   width: 100%;
+   max-height: 300px;
+   object-fit: cover;
+   border-radius: 12px;
+   margin-bottom: 20px;
+}
+
+/* Social Media Activity Variant Styles */
+.multi-slide-wrapper.multi-slide-social {
+   background-color: var(--bs-body-bg, #2b2b2e);
+}
+
+.multi-slide-wrapper.multi-slide-social .social-card {
+   background-color: #ffffff !important;
+   border-radius: 18px;
+   border: none;
+   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.multi-slide-wrapper.multi-slide-social .social-card:hover {
+   transform: translateY(-4px);
+   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.multi-slide-wrapper.multi-slide-social .social-card-header {
+   border-bottom: none;
+   padding: 1rem;
+}
+
+.multi-slide-wrapper.multi-slide-social .social-profile-avatar-wrapper {
+   width: 32px;
+   height: 32px;
+   border-radius: 50%;
+   overflow: hidden;
+   border: 1px solid rgba(0, 0, 0, 0.1);
+   flex-shrink: 0;
+}
+
+.multi-slide-wrapper.multi-slide-social .social-profile-username {
+   font-weight: 700;
+   color: #1a1a1a;
+   font-size: 0.9rem;
+   letter-spacing: 0.03em;
+}
+
+.multi-slide-wrapper.multi-slide-social .social-card-img-wrapper {
+   width: 100%;
+   position: relative;
+}
+
+.multi-slide-wrapper.multi-slide-social .social-card-body {
+   padding: 0.9rem 1rem;
+}
+
+.multi-slide-wrapper.multi-slide-social .social-card-time {
+   color: #6c757d;
+   font-size: 0.85rem;
+   font-weight: 500;
 }
