@@ -1,6 +1,6 @@
 @php
    $carouselId = $id ?? 'multi-slide-' . uniqid();
-   $titleId = $titleId ?? ($id ? $id . '-title' : null);
+   $titleId = $titleId ?? $carouselId . '-title';
    $title = $title ?? 'MOMENTS';
    $subtitle = $subtitle ?? null;
    $viewAllUrl = $viewAllUrl ?? null;
@@ -12,6 +12,7 @@
    $visibleMd = $visibleMd ?? 2;
    $visibleSm = $visibleSm ?? 1;
    $items = $items ?? [];
+   $itemCount = count($items);
    $variant = $variant ?? 'default';
    $showControls = isset($showControls) ? (bool) $showControls : $variant !== 'timeline';
    $showArrows = isset($showArrows) ? (bool) $showArrows : $variant !== 'timeline';
@@ -32,18 +33,18 @@
    }
 @endphp
 
-<div id="{{ $carouselId }}" class="{{ $wrapperClasses }}" data-multi-slide
-   data-autoplay="{{ $autoplay ? 'true' : 'false' }}" data-interval="{{ $interval }}"
-   data-loop="{{ $loop ? 'true' : 'false' }}" data-visible-lg="{{ $visibleLg }}" data-visible-md="{{ $visibleMd }}"
-   data-visible-sm="{{ $visibleSm }}" data-show-controls="{{ $showControls ? 'true' : 'false' }}"
-   data-show-arrows="{{ $showArrows ? 'true' : 'false' }}"
+<section id="{{ $carouselId }}" class="{{ $wrapperClasses }}" data-multi-slide role="region"
+   aria-roledescription="carousel" aria-labelledby="{{ $titleId }}" data-autoplay="{{ $autoplay ? 'true' : 'false' }}"
+   data-interval="{{ $interval }}" data-loop="{{ $loop ? 'true' : 'false' }}" data-visible-lg="{{ $visibleLg }}"
+   data-visible-md="{{ $visibleMd }}" data-visible-sm="{{ $visibleSm }}"
+   data-show-controls="{{ $showControls ? 'true' : 'false' }}" data-show-arrows="{{ $showArrows ? 'true' : 'false' }}"
    data-show-indicators="{{ $showIndicators ? 'true' : 'false' }}" data-swipe="{{ $swipe ? 'true' : 'false' }}">
 
    {{-- Slider Header --}}
    <div
       class="multi-slide-header row justify-content-between align-items-center {{ $variant === 'timeline' ? 'mb-2' : 'mb-4' }}">
       <div class="multi-slide-title-wrapper col-12 col-md">
-         <h2 @if ($titleId) id="{{ $titleId }}" @endif
+         <h2 id="{{ $titleId }}"
             class="multi-slide-header-title text-title fs-3 fw-semibold {{ $variant === 'timeline' ? 'text-white' : '' }}">
             {{ $title }}</h2>
          @if ($subtitle)
@@ -68,7 +69,7 @@
                <div class="multi-slide-arrows d-flex align-items-center gap-2">
                   <button type="button"
                      class="multi-slide-arrow multi-slide-prev btn btn-outline-secondary rounded-circle d-flex justify-content-center align-items-center position-relative"
-                     aria-label="Previous slide">
+                     aria-label="Previous slide" aria-controls="{{ $carouselId }}-track">
                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true" width="21"
                         height="21" class="position-absolute top-50 start-50 translate-middle">
                         <path fill="currentColor"
@@ -77,7 +78,7 @@
                   </button>
                   <button type="button"
                      class="multi-slide-arrow multi-slide-next btn btn-outline-secondary rounded-circle d-flex justify-content-center align-items-center position-relative"
-                     aria-label="Next slide">
+                     aria-label="Next slide" aria-controls="{{ $carouselId }}-track">
                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true" width="21"
                         height="21" class="position-absolute top-50 start-50 translate-middle">
                         <path fill="currentColor"
@@ -92,7 +93,8 @@
 
    {{-- Slider Main Container --}}
    <div class="multi-slide-container position-relative">
-      <div class="multi-slide-track">
+      <div id="{{ $carouselId }}-track" class="multi-slide-track" role="list"
+         aria-label="{{ $title }} slides">
          @foreach ($items as $item)
             @php
                $itemTitle = is_array($item) ? $item['title'] ?? '' : $item->title ?? '';
@@ -114,36 +116,38 @@
             @endphp
 
             @if ($variant === 'timeline')
-               <div class="multi-slide-item">
+               <div class="multi-slide-item" role="listitem" aria-roledescription="slide"
+                  aria-label="Slide {{ $loop->iteration }} of {{ $itemCount }}">
                   <article class="card timeline-card border-0 text-center">
                      <div class="timeline-img-wrapper">
-                        {{-- <img src="{{ asset($itemImage) }}" alt="{{ strip_tags($itemTitle) }}" loading="lazy"> --}}
-                        <img src="{{ asset($itemImage) }}" aria-hidden="true" loading="lazy">
+                        <img src="{{ asset($itemImage) }}" alt="{{ strip_tags($itemTitle) }}" loading="lazy">
                      </div>
                      <h3 class="timeline-title">{!! nl2br(e($itemTitle)) !!}</h3>
                      <hr class="timeline-divider">
                      @if ($itemModal)
                         <button type="button" class="timeline-more-btn" data-bs-toggle="modal"
-                           data-bs-target="#{{ $itemModal }}">more</button>
+                           data-bs-target="#{{ $itemModal }}"
+                           aria-label="Read more about {{ strip_tags($itemTitle) }}">more</button>
                      @elseif($itemUrl && $itemUrl !== '#')
-                        <a href="{{ $itemUrl }}" class="timeline-more-btn">more</a>
+                        <a href="{{ $itemUrl }}" class="timeline-more-btn"
+                           aria-label="Read more about {{ strip_tags($itemTitle) }}">more</a>
                      @else
                         <span class="timeline-more-btn">more</span>
                      @endif
                   </article>
                </div>
             @elseif ($variant === 'social' || $variant === 'sosmed')
-               <div class="multi-slide-item">
+               <div class="multi-slide-item" role="listitem" aria-roledescription="slide"
+                  aria-label="Slide {{ $loop->iteration }} of {{ $itemCount }}">
                   <article
-                     class="card social-card bg-white border-0 rounded-4 overflow-hidden shadow-sm h-100 position-relative">
+                     class="card social-card bg-white border-0 rounded-4 overflow-hidden shadow h-100 position-relative">
                      <div
                         class="card-header social-card-header bg-transparent border-0 d-flex align-items-center justify-content-between p-3">
                         <div class="d-flex align-items-center gap-2">
                            <div
                               class="social-profile-avatar-wrapper rounded-circle overflow-hidden d-flex align-items-center justify-content-center"
                               style="width: 30px; height: 30px;">
-                              {{-- <img src="{{ asset($itemAvatar) }}" alt="{{ $itemAuthor }}" class="w-100 h-100 object-fit-cover"> --}}
-                              <img src="{{ asset($itemAvatar) }}" aria-hidden="true"
+                              <img src="{{ asset($itemAvatar) }}" alt="{{ $itemAuthor }}"
                                  class="w-100 h-100 object-fit-cover">
                            </div>
                            <span class="social-profile-username fw-bold text-dark small">{{ $itemAuthor }}</span>
@@ -157,18 +161,17 @@
                         </div>
                      </div>
                      <div class="social-card-img-wrapper ratio ratio-1x1 overflow-hidden">
-                        {{-- <img src="{{ asset($itemImage) }}" class="object-fit-cover w-100 h-100" alt="{{ $itemAuthor }}" loading="lazy"> --}}
-                        <img src="{{ asset($itemImage) }}" class="object-fit-cover w-100 h-100" aria-hidden="true"
-                           loading="lazy">
+                        <img src="{{ asset($itemImage) }}" alt="Social media post by {{ $itemAuthor }}"
+                           class="object-fit-cover w-100 h-100" loading="lazy">
                      </div>
                      <div class="card-body social-card-body p-3 d-flex align-items-center justify-content-between">
                         <div class="social-card-time d-flex align-items-center gap-1 text-secondary small">
-                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="12" height="12"
-                              fill="currentColor">
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="12"
+                              height="12" aria-hidden="true" fill="currentColor">
                               <path
                                  d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-156.8l-77.8-77.7V112c0-8.8-7.2-16-16-16s-16 7.2-16 16v120c0 4.2 1.7 8.3 4.7 11.3l82.8 82.8c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6z" />
                            </svg>
-                           <span>{{ $itemDate }}</span>
+                           <time datetime="{{ $itemDate }}">{{ $itemDate }}</time>
                         </div>
                      </div>
                      @if ($itemUrl && $itemUrl !== '#')
@@ -178,13 +181,13 @@
                   </article>
                </div>
             @else
-               <div class="multi-slide-item">
+               <div class="multi-slide-item" role="listitem" aria-roledescription="slide"
+                  aria-label="Slide {{ $loop->iteration }} of {{ $itemCount }}">
                   <article
                      class="card multi-slide-card bg-body-secondary border-0 rounded-4 overflow-hidden h-100 shadow">
                      <div class="multi-slide-card-img-wrapper ratio ratio-16x9">
                         <img src="{{ asset($itemImage) }}" alt="{{ $itemTitle }}"
-                           class="object-fit-cover w-100 h-100 multi-slide-card-img" loading="lazy"
-                           aria-hidden="true">
+                           class="object-fit-cover w-100 h-100 multi-slide-card-img" loading="lazy">
                      </div>
                      <div class="card-body p-4 d-flex flex-column justify-content-between">
                         <div>
@@ -208,7 +211,8 @@
    {{-- Bottom Indicators --}}
    @if ($showIndicators)
       <div
-         class="multi-slide-indicators d-flex justify-content-center align-items-center gap-2 mt-4 position-relative z-2">
+         class="multi-slide-indicators d-flex justify-content-center align-items-center gap-2 mt-4 position-relative z-2"
+         role="group" aria-label="Slide navigation">
       </div>
    @endif
-</div>
+</section>

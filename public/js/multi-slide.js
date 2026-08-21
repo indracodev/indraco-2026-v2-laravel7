@@ -167,6 +167,7 @@ class MultiSlideCarousel {
          dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
          if (i === this.realIndex) {
             dot.classList.add('active');
+            dot.setAttribute('aria-current', 'true');
          }
 
          dot.addEventListener('click', () => {
@@ -198,8 +199,23 @@ class MultiSlideCarousel {
          const dots = this.indicatorsContainer.querySelectorAll('.multi-slide-dot');
          dots.forEach((dot, idx) => {
             dot.classList.toggle('active', idx === this.realIndex);
+            if (idx === this.realIndex) {
+               dot.setAttribute('aria-current', 'true');
+            } else {
+               dot.removeAttribute('aria-current');
+            }
          });
       }
+
+      this.originalSlides.forEach((slide) => {
+         slide.setAttribute('aria-hidden', 'false');
+         slide.inert = false;
+      });
+
+      this.track.querySelectorAll('.multi-slide-clone').forEach((clone) => {
+         clone.setAttribute('aria-hidden', 'true');
+         clone.inert = true;
+      });
 
       // Disabled state for buttons if not looping
       if (!this.isLoop) {

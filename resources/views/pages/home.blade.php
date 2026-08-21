@@ -13,6 +13,8 @@
 @endpush
 
 @section('content')
+   <h1 class="visually-hidden">Mendekatkan Rasa, Menghubungkan Kehidupan.</h1>
+
    {{-- 3D Product Categories Hero Carousel (Integrasi dengan Admin Banner) --}}
    <section class="product-slider-section mb-5" aria-labelledby="categories-title">
       <h2 id="categories-title" class="visually-hidden">INDRACO Category Product</h2>
@@ -201,7 +203,7 @@
              ],
              [
                  'category' => 'EXHIBITION',
-                 'title' => 'Keikutsertaan INDRACO di Pameran Inrternational',
+                 'title' => 'Keikutsertaan INDRACO di Pameran International',
                  'date' => 'April 15, 2026',
                  'image' => 'images/news/news-4.jpg',
                  'url' => '#',
